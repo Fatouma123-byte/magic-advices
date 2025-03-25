@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>🔮 The Magic Advice Ball</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #d8b4fe, #a78bfa);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 2px 2px 4px #00000055;
+    }
+
+    .magic-ball {
+      background: white;
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+      margin-bottom: 20px;
+      padding: 20px;
+      text-align: center;
+      color: #4c1d95;
+      font-weight: bold;
+      font-size: 1.2em;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button {
+      background: #7c3aed;
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #5b21b6;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9em;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔮 The Magic Advice Ball</h1>
+
+  <div class="magic-ball" id="advice">
+    Click the button to get a piece of advice!
+  </div>
+
+  <button onclick="getAdvice()">✨ Give me some advice</button>
+
+  <div class="footer">API : api.adviceslip.com</div>
+
+  <script>
+    async function getAdvice() {
+      const response = await fetch("https://api.adviceslip.com/advice");
+      const data = await response.json();
+      const advice = data.slip.advice;
+      document.getElementById("advice").textContent = advice;
+    }
+  </script>
+</body>
+</html>
